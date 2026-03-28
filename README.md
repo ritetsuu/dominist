@@ -1,0 +1,2 @@
+# dominist
+Documentation :)
