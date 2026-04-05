@@ -3,296 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dominist Studios - Publishing (2026)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Dominist Studios - Publishing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* --- CORE STYLES & VARIABLES --- */
+        /* --- YOUR EXACT CSS --- */
         :root {
-            --bg-color: #0f172a;       /* Very dark navy */
-            --sidebar-bg: #1e293b;    /* Dark gray-blue */
-            --card-bg: rgba(255, 255, 255, 0.03); /* Glassmorphism background */
-            --border-color: rgba(255, 255, 255, 0.08); /* Subtle border */
-            
-            --text-primary: #f1f5f9;  /* Bright off-white */
-            --text-secondary: #94a3b8; /* Cool gray */
-            --accent-primary: #38bdf8; /* Bright cyan */
-            --accent-hover: #7dd3fc;   /* Lighter cyan */
-            
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+            --bg-color: #f4f7f6;
+            --sidebar-color: #ffffff;
+            --accent-color: #3b82f6;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-primary);
-            display: flex; /* Creates the sidebar/main content layout */
-            min-height: 100vh;
-            line-height: 1.6;
+            display: flex;
         }
 
-        /* --- SIDEBAR STYLING --- */
+        /* Sidebar Styling */
         .sidebar {
-            width: 280px;
-            background-color: var(--sidebar-bg);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid var(--border-color);
-            position: fixed; /* Keeps sidebar fixed when scrolling */
+            width: 260px;
             height: 100vh;
+            background: var(--sidebar-color);
+            border-right: 1px solid #e5e7eb;
+            position: fixed;
+            padding: 2rem 1rem;
         }
 
         .logo {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 3rem;
-            letter-spacing: -1px;
-        }
-        
-        /* Highlight the 'Studios' part of the logo */
-        .logo span {
-            color: var(--accent-primary);
+            color: var(--accent-color);
+            margin-bottom: 2.5rem;
+            padding-left: 1rem;
         }
 
         .sidebar ul {
             list-style: none;
+            padding: 0;
         }
 
         .sidebar li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .sidebar a {
             text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 400;
-            display: block;
+            color: var(--text-muted);
             padding: 0.8rem 1rem;
-            border-radius: 12px;
-            transition: var(--transition);
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
-        /* Hover effect: Subtle background change and bright text */
+        /* Hover and Active States */
         .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--text-primary);
+            background: #f3f4f6;
+            color: var(--text-main);
         }
 
-        /* Active link styling (cyan glow) */
         .sidebar a.active {
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent-primary);
-            font-weight: 600;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            background: var(--accent-color);
+            color: white;
         }
 
-        /* --- MAIN CONTENT STYLING --- */
+        /* Main Content Area */
         .content {
-            margin-left: 280px; /* IMPORTANT: Must match sidebar width */
-            padding: 4rem;
-            width: calc(100% - 280px);
+            margin-left: 260px; /* Same as sidebar width */
+            padding: 3rem;
+            max-width: 900px; /* Added for better readability on wide screens */
+            width: 100%;
+            color: var(--text-main);
         }
 
-        /* Typography */
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            font-weight: 300;
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            margin-top: 1rem;
-            font-weight: 600;
-        }
-        
-        /* Content Sections (Glassmorphism Cards) */
-        section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            border-radius: 20px;
-            margin-bottom: 2.5rem;
-            box-shadow: var(--shadow-md);
-            backdrop-filter: blur(5px); /* Adds subtle frosted glass blur */
-        }
-        
-        section p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            max-width: 700px; /* Limits paragraph width for readability */
-        }
-        
-        hr {
-            border: 0;
-            border-top: 1px solid var(--border-color);
-            margin: 3rem 0;
-        }
-
-        /* List Styling within Sections */
-        h3 {
-            font-size: 1.1rem;
-            color: var(--accent-primary);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        ul, ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        li {
-            margin-bottom: 0.75rem;
-        }
-        
-        li strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        /* Hyperlinks within content */
-        .content a {
-            color: var(--accent-primary);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: var(--transition);
-        }
-
-        .content a:hover {
-            color: var(--accent-hover);
-            border-bottom: 1px solid var(--accent-hover);
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            padding-top: 2rem;
-            text-align: center;
-            color: #475569; /* Much dimmer gray */
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Responsive Design */
-        @media (max-width: 900px) {
-            body {
-                flex-direction: column; /* Stacks sidebar on top of content */
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding: 1.5rem;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-            }
-            
-            .logo {
-                margin-bottom: 1.5rem;
-                text-align: center;
-            }
-
-            .sidebar ul {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-            }
-            
-            .sidebar li {
-                margin-bottom: 0;
-            }
-
-            .content {
-                margin-left: 0;
-                width: 100%;
-                padding: 2rem;
-            }
-        }
+        /* --- ADDITIONAL CONTENT TWEAKS (Matching your style) --- */
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; color: var(--text-main); }
+        h3 { font-size: 1.1rem; margin-top: 1.5rem; color: var(--accent-color); }
+        p { line-height: 1.6; color: var(--text-main); margin-bottom: 1rem; }
+        ul, ol { padding-left: 1.2rem; color: var(--text-main); }
+        li { margin-bottom: 0.5rem; }
+        hr { border: 0; border-top: 1px solid #e5e7eb; margin: 2rem 0; }
+        footer { margin-top: 4rem; color: var(--text-muted); font-size: 0.85rem; }
+        a.resource-link { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+        a.resource-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
     <nav class="sidebar">
-        <div class="logo">Dominist <span>Studios</span></div>
+        <div class="logo">Studio</div>
         <ul>
             <li><a href="index.html">Dashboard</a></li>
-            <li><a href="publishing.html" class="active">Documentation on Publishing</a></li>
-            <li><a href="herobattles.html">Hero Battles Documents</a></li>
-            <li><a href="nagibot.html">Nagi#4089 Discord Bot</a></li>
+            <li><a href="docspublishing.html" class="active">Publishing Docs</a></li>
+            <li><a href="herobattles.html">Hero Battles</a></li>
+            <li><a href="nagibot.html">Nagi Bot</a></li>
         </ul>
     </nav>
 
     <main class="content">
         <h1>Roblox Creator Documentation</h1>
-        <p class="subtitle">Unofficial Guildlines regarding public strategies and trust requirements for 2026.</p>
+        <p style="color: var(--text-muted);">2026 Unofficial Strategy Guide for Dominist Studios</p>
         
+        <hr>
+
         <section>
-            <h2>Section 1: The "Public" Strategy (Recommended)</h2>
-            <p>To allow random players to find your game via search or direct links, your experience must be set to <strong>Public</strong>. As of early 2026, accounts must meet at least one "Trust Requirement" to toggle this setting.</p>
+            <h2>Section 1: The "Public" Strategy</h2>
+            <p>To allow random players to find your game via search or direct links, your experience must be set to <strong>Public</strong>. As of early 2026, accounts must meet at least one trust requirement.</p>
             
             <h3>Trust Requirements</h3>
             <ul>
-                <li><strong>ID Verification:</strong> Uploading a government-issued ID via account settings.</li>
-                <li><strong>Verified Purchaser:</strong> Having a record of a real-currency purchase (Robux or Gift Cards) since January 1, 2025.</li>
-                <li><strong>Established Status:</strong> A history of DevEx or high-engagement milestones.</li>
+                <li><strong>ID Verification:</strong> Valid government-issued ID.</li>
+                <li><strong>Verified Purchaser:</strong> Real-currency purchase since Jan 1, 2025.</li>
+                <li><strong>Established Status:</strong> History of DevEx or high milestones.</li>
             </ul>
 
             <h3>Steps to Publish</h3>
             <ol>
-                <li>Open <strong>Roblox Studio</strong> and select <em>File > Publish to Roblox</em>.</li>
-                <li>Navigate to the <a href="https://create.roblox.com/dashboard/creations" target="_blank">Creator Dashboard</a>.</li>
-                <li>Select your experience and go to <strong>Settings > Basic Info</strong>.</li>
-                <li>Complete the <strong>Content Maturity Questionnaire</strong> (Required for visibility).</li>
-                <li>Under <strong>Permissions</strong>, switch the toggle to <strong>Public</strong> and click Save.</li>
+                <li>Open <strong>Roblox Studio</strong> and <em>File > Publish</em>.</li>
+                <li>Go to the <a href="https://create.roblox.com/dashboard/creations" class="resource-link">Creator Dashboard</a>.</li>
+                <li>Complete the <strong>Content Maturity Questionnaire</strong>.</li>
+                <li>Under <strong>Permissions</strong>, toggle to <strong>Public</strong> and Save.</li>
             </ol>
         </section>
 
         <section>
-            <h2>Section 2: The "No-Verify" Workaround (Private Playtesting)</h2>
-            <p>If you prefer not to verify your ID or spend money, you can still host players by manually authorizing them as "Connections." Note: This does not make the game visible to random users; only those you invite can join.</p>
+            <h2>Section 2: The "No-Verify" Workaround</h2>
+            <p>If you prefer not to verify, you can manually authorize players as "Connections." This limits access only to those you specifically invite.</p>
 
             <h3>Authorized Access Setup</h3>
             <ul>
-                <li><strong>Friendship:</strong> You must first be friends with the user on the Roblox platform.</li>
-                <li><strong>Studio Permissions:</strong> Open your game in Roblox Studio and click the <strong>Collaborate</strong> button in the top right.</li>
-                <li><strong>User Search:</strong> Search for the specific username of your friend.</li>
-                <li><strong>Set Access:</strong> Change their permission level to <strong>Play</strong>. (Avoid "Edit" unless you want them to change your code).</li>
-                <li><strong>Save:</strong> Click Save to apply changes.</li>
+                <li><strong>Friendship:</strong> Must be friends on Roblox first.</li>
+                <li><strong>Collaborate:</strong> Use the button in the top right of Studio.</li>
+                <li><strong>Permissions:</strong> Search the username and set to <strong>Play</strong>.</li>
             </ul>
-            <p>When your authorized friend clicks your game link, they will see a green "Play" button instead of a "Permission Denied" error.</p>
         </section>
 
         <hr>
 
-        <section style="background: transparent; border: none; padding: 0; backdrop-filter: none; box-shadow: none;">
+        <section>
             <h2>Important Resources</h2>
             <ul>
-                <li><a href="https://create.roblox.com/dashboard/creations" target="_blank">Roblox Creator Dashboard</a> - Manage your experiences.</li>
-                <li><a href="https://www.roblox.com/my/account#!/personal" target="_blank">Account Verification Settings</a> - Check your current trust status.</li>
-                <li><a href="https://create.roblox.com/docs/production/publishing/publishing-experiences" target="_blank">Official Publishing Docs</a> - Detailed technical guide.</li>
+                <li><a href="https://create.roblox.com/dashboard/creations" class="resource-link">Creator Dashboard</a></li>
+                <li><a href="https://www.roblox.com/my/account#!/personal" class="resource-link">Account Settings</a></li>
+                <li><a href="https://create.roblox.com/docs/production/publishing/publishing-experiences" class="resource-link">Official Docs</a></li>
             </ul>
         </section>
 
@@ -300,5 +157,6 @@
             <p><em>Documentation Last Updated: March 2026</em></p>
         </footer>
     </main>
+
 </body>
 </html>
